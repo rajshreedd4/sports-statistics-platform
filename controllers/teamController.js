@@ -13,7 +13,7 @@ exports.createTeam = async (req, res) => {
 // Get All Teams
 exports.getTeams = async (req, res) => {
   try {
-    const teams = await Team.find().populate("players");
+    const teams = await Team.find();
     res.status(200).json({ success: true, data: teams });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
@@ -23,7 +23,7 @@ exports.getTeams = async (req, res) => {
 // Get Team by ID
 exports.getTeamById = async (req, res) => {
   try {
-    const team = await Team.findById(req.params.id).populate("players");
+    const team = await Team.findById(req.params.id);
     if (!team) return res.status(404).json({ message: "Team not found" });
     res.status(200).json({ success: true, data: team });
   } catch (error) {
