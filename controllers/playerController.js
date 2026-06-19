@@ -23,7 +23,7 @@ exports.getPlayers = async (req, res) => {
 // Get Player by ID
 exports.getPlayerById = async (req, res) => {
   try {
-    const player = await Player.findById(req.params.id);nod
+    const player = await Player.findById(req.params.id);
     if (!player) return res.status(404).json({ message: "Player not found" });
     res.status(200).json({ success: true, data: player });
   } catch (error) {
