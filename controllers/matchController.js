@@ -13,7 +13,7 @@ exports.createMatch = async (req, res) => {
 // Get All Matches
 exports.getMatches = async (req, res) => {
   try {
-    const matches = await Match.find().populate("teams");
+    const matches = await Match.find();
     res.status(200).json({ success: true, data: matches });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
@@ -23,7 +23,7 @@ exports.getMatches = async (req, res) => {
 // Get Match by ID
 exports.getMatchById = async (req, res) => {
   try {
-    const match = await Match.findById(req.params.id).populate("teams");
+    const match = await Match.findById(req.params.id);
     if (!match) return res.status(404).json({ message: "Match not found" });
     res.status(200).json({ success: true, data: match });
   } catch (error) {
